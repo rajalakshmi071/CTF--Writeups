@@ -1,2 +1,91 @@
 # CTF--Writeups
-My cybersecurity CTF challenge solutions and learning notes
+Team Leader: Rajalakshmi. R
+teammate 1 : Sivapriya. p
+teammate 2 : Prathiksha . s
+
+We solved 10 questions of CTF
+
+1. Category: Reverse Engineering 
+   Challenge: Code Maze 
+The description mentioned that "This python script is heavily obfuscated"...
+When the observe closer we found
+base64.b64decode(data) decodes the Base64 data.
+zlib.decompress(...) decompresses the decoded content.
+exec(...) executes the resulting Python code.
+
+2. Category: Cryptography
+   Challenge: Caesar's Secret
+The provided file contained the following information:
+Date: 44 BC
+Source: Roman Empire
+Cipher: Caesar
+Encrypted message: BNIFC{043f4e_p1cu3e_1f_34f1_g0_pe4px}
+I identified the encryption method as a Caesar cipher from the challenge description and the contents of the file.
+Actually I used google for decoding it as I didn't know how to decode this...
+From this I can understand how a Caesar cipher can be identified and solved by testing possible shift values.
+
+3. Category: Cryptography
+   Challenge: Encoding Chaos
+Points: 100
+After opening the provided file, we observed the following information:
+Source: Unknown
+Date: 2024-03-15
+Multiple layers of encode
+So we attempt to breakdown those layers from original string to another base64 string 
+And finally found the flag in binary format
+
+4. Category: Cryptography
+   Challenge: RSA Warmup
+Actually we searched it on Google of how to solve it
+It mentioned to solve it by using RSA formula φ(n) = (p − 1)(q − 1)
+As the values n and e was given as key.
+As for finding d we used this 
+(e × d) mod φ(n) = 1
+Each ciphertext integer was decrypted using:
+m = c^d mod n
+The resulting integers were converted into characters to recover the plaintext.
+Hence we recovered the flag.
+From this we learned a lot about RSA
+
+5. Category: Forensics
+   Challenge: Hidden in plain slight
+We simply opened the file
+The file itself highlights the flag
+Hence we found the flag
+
+6. Category: Forensics
+   Challenge: Pixel Secrets
+Actually we used STEGANOGRAPY online tool for decoding the image vactaion_photo.png
+Hence we found the flag
+
+7. Category: Forensics
+   Challenge: Ghost in the Text
+With the help of Google,I examined the whitespace characters in the file, focusing on the spaces and tab characters.
+The hidden data used a binary encoding scheme in which:
+A space represented 0.
+A tab represented 1.
+Each group of eight bits could then be converted into an ASCII character.
+Hence we found the decoded message.
+From this challenge, I learned that whitespace can carry information even when the visible text looks normal.
+
+8. Category: Miscellaneous 
+   Challenge: Welcome to OWASP SREC
+When we clicked the file "welcome.txt" it shows the flag in it.
+
+9. Category: Miscellaneous
+   Challenge: Cipher Master
+I did everything mentioned in the description with the help of Google 
+I cleared multiple layers and finally found the flag
+
+10. Category: Miscellaneous
+    Challenge: 67
+The number 6 represents a binary 0.
+The number 7 represents a binary 1.
+The binary sequence is split into 8-bit blocks (bytes)
+hence we decoded and found the flag
+
+Thus, this the end of our Writeups of CTF
+our team : RPS
+Team Leader: Rajalakshmi.R
+teammate 1 : Sivapriya.p
+teammate 2 : Prathiksha.s
